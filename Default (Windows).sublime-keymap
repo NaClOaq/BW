@@ -1,0 +1,228 @@
+// undo
+	// { "keys": ["ctrl+shift+/"], "command": "redo"},
+	{ "keys": ["alt+["], "command": "soft_undo" },
+	{ "keys": ["alt+]"], "command": "soft_redo" },
+
+// 置換
+	{ "keys": ["alt+shift+5"], "command": "show_panel", "args": {"panel": "replace"} },
+
+// 新規バッファ
+	{ "keys": ["Ctrl+x","n"], "command": "new_file" },
+    { "keys": ["ctrl+n"], "command": "new_file" },
+
+// 複数選択
+	{ "keys": ["ctrl+shift+l"], "command": "split_selection_into_lines" },
+	{ "keys": ["ctrl+shift+d"], "command": "find_under_expand" },
+	{ "keys": ["ctrl+shift+k", "ctrl+shift+d"], "command": "find_under_expand_skip" },
+
+// タブ挿入	
+	{ "keys": ["ctrl+q","tab"], "command": "insert", "args": {"characters": "\t"} },
+
+// anythigパネル
+	{ "keys": ["ctrl+t"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+
+
+// 改行関係
+	{ "keys": ["ctrl+j"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+	// { "keys": ["ctrl+shift+j"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line Before.sublime-macro"} },
+	{ "keys": ["ctrl+shift+j"], "command": "join_lines" },
+	{ "keys": ["ctrl+shift+o"], "command": "join_lines" },
+
+// 折りたたみ
+	{ "keys": ["ctrl+shift+["], "command": "fold" },
+	{ "keys": ["ctrl+shift+]"], "command": "unfold" },
+
+
+// Emmet
+    {
+        "keys": [
+            "alt+e"
+        ], 
+        "args": {
+            "action": "select_next_item"
+        }, 
+        "command": "run_emmet_action", 
+        "context": [
+            {
+                "key": "emmet_action_enabled.select_next_item"
+            }
+        ]
+    },
+    {
+        "keys": [
+            "alt+a"
+        ], 
+        "args": {
+            "action": "select_previous_item"
+        }, 
+        "command": "run_emmet_action", 
+        "context": [
+            {
+                "key": "emmet_action_enabled.select_previous_item"
+            }
+        ]
+    },
+	// 展開
+	{ "keys": [ "ctrl+enter" ],  "args": { "action": "expand_abbreviation" },"command": "run_emmet_action",  "context": [ { "key":"emmet_action_enabled.expand_abbreviation" } ] },
+	// 親要素へ
+	{ "keys": [ "ctrl+alt+j" ],  "args": { "action": "matching_pair" },"command": "run_emmet_action",  "context": [ { "key":"emmet_action_enabled.matching_pair" } ] },
+	// タブキー
+	{
+        "keys": [
+            "tab"
+        ], 
+        "command": "expand_abbreviation_by_tab", 
+        "context": [
+            {
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "operand": "storage.type.templatetag.django", 
+                "operator": "not_equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "match_all": true, 
+                "key": "has_next_field"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "match_all": true, 
+                "key": "setting.disable_tab_abbreviations"
+            }, 
+            {
+                "operand": false, 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "auto_complete_visible"
+            }, 
+            {
+                "match_all": true, 
+                "key": "is_abbreviation"
+            }
+        ]
+    }, 
+//tab 挙動
+    {
+        "keys": [
+            "tab"
+        ], 
+        "command": "expand_abbreviation_by_tab", 
+        "context": [
+            {
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "operand": "storage.type.templatetag.django", 
+                "operator": "not_equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "match_all": true, 
+                "key": "has_next_field"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": true, 
+                "match_all": true, 
+                "key": "auto_complete_visible"
+            }, 
+            {
+                "operator": "equal",
+                "operand": false, 
+                "match_all": true,
+                "key": "setting.disable_tab_abbreviations_on_auto_complete"
+            }, 
+            {
+                "match_all": true, 
+                "key": "is_abbreviation"
+            }
+        ]
+    },
+    { "keys": ["ctrl+x", "n"], "command": "side_bar_new_file2" },
+    { "keys": ["f2"], "command": "side_bar_rename" },
+    { "keys": ["ctrl+alt+f"], "command": "side_bar_find_files_path_containing" } ,
+
+//sublemacs
+    { "keys": ["home"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+    { "keys": ["end"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+    { "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+    { "keys": ["ctrl+a"], "command": "select_all" },
+
+//sublimeFiles
+    { "keys": ["ctrl+x", "f"],"command": "sublime_files","args": {"command": "navigate"} },
+
+//advancedNewFile
+    { "keys": ["ctrl+alt+n"], "command": "advanced_new_file_new"},
+
+//expandRegion
+{ "keys": ["ctrl+shift+space"], "command": "expand_region" },
+{
+  "keys": ["alt+shift+["],
+  "command": "expand_region",
+  "args": {"undo": true},
+  "context": [{ "key": "expand_region_soft_undo" }]
+},
+
+
+
+//braketHirighter
+    // Select text between brackets
+    // {
+    //     "no_outside_adj": true,
+    //     "keys": ["ctrl+shift+space"],
+    //     "command": "bh_key",
+    //     "args":
+    //     {
+    //         "lines" : true,
+    //         "plugin":
+    //         {
+    //             "type": ["__all__"],
+    //             "command": "bh_modules.bracketselect"
+    //         }
+    //     }
+    // },
+    // {
+    //     "keys": ["ctrl+shift+alt+space"],
+    //     "command": "bh_key",
+    //     "args":
+    //     {
+    //         "no_outside_adj": true,
+    //         "lines" : true,
+    //         "plugin":
+    //         {
+    //             "type": ["__all__"],
+    //             "command": "bh_modules.bracketselect",
+    //             "args": {"always_include_brackets": true}
+    //         }
+    //     }
+    // },
+
+//set mark LC+space
+//単語選択 RC+space
+//ブラケット内選択 RC+shift+space
+//ブラケット共選択 RC+shift+alt+space
+
+]
+C:\Users\B0107103\AppData\Roaming\Sublime Text 3\Packages\User\Default (Windows).sublime-keymap
