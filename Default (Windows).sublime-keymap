@@ -1,3 +1,4 @@
+[
 // undo
 	// { "keys": ["ctrl+shift+/"], "command": "redo"},
 	{ "keys": ["alt+["], "command": "soft_undo" },
@@ -177,15 +178,15 @@
     { "keys": ["ctrl+alt+n"], "command": "advanced_new_file_new"},
 
 //expandRegion
-{ "keys": ["ctrl+shift+space"], "command": "expand_region" },
-{
-  "keys": ["alt+shift+["],
-  "command": "expand_region",
-  "args": {"undo": true},
-  "context": [{ "key": "expand_region_soft_undo" }]
-},
-
-
+    { "keys": ["ctrl+shift+space"], "command": "expand_region" },
+    {
+      "keys": ["alt+shift+["],
+      "command": "expand_region",
+      "args": {"undo": true},
+      "context": [{ "key": "expand_region_soft_undo" }]
+    },
+//shell_command
+    {"keys": ["alt+shift+1"],"command": "shell_command"},
 
 //braketHirighter
     // Select text between brackets
@@ -223,6 +224,4 @@
 //単語選択 RC+space
 //ブラケット内選択 RC+shift+space
 //ブラケット共選択 RC+shift+alt+space
-
 ]
-C:\Users\B0107103\AppData\Roaming\Sublime Text 3\Packages\User\Default (Windows).sublime-keymap
