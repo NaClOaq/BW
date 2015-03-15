@@ -1,3 +1,4 @@
 *
 !*.sublime-keymap
 !.gitignore
+!Preferences.sublime-settings

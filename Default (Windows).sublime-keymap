@@ -1,4 +1,3 @@
-
 [
 // undo
 	// { "keys": ["ctrl+shift+/"], "command": "redo"},
@@ -10,14 +9,25 @@
 
 // 新規バッファ
 	{ "keys": ["Ctrl+x","n"], "command": "new_file" },
-    { "keys": ["ctrl+n"], "command": "new_file" },
+	{ "keys": ["ctrl+n"], "command": "new_file" },
 
 // 複数選択
 	{ "keys": ["ctrl+shift+l"], "command": "split_selection_into_lines" },
 	{ "keys": ["ctrl+shift+d"], "command": "find_under_expand" },
+	{ "keys": ["ctrl+u"], "command": "find_under" },
 	{ "keys": ["ctrl+shift+k", "ctrl+shift+d"], "command": "find_under_expand_skip" },
+	{ "keys": ["ctrl+h"], "command": "find_next" },
+	{ "keys": ["ctrl+shift+g"], "command": "find_all_under" },
 
-// タブ挿入	
+	// { "keys": ["ctrl+s"], "command": "find_under_expand_skip" },
+	// { "keys": ["ctrl+shift+s"], "command": "find_under_expand" },
+	// { "keys": ["ctrl+shift+alt+s"], "command": "find_all_under" },
+
+// インクリメンタルサーチ検索
+	{ "keys": ["ctrl+s"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
+	{ "keys": ["ctrl+shift+s"], "command": "show_panel", "args": {"panel": "incremental_find", "reverse": true} },
+
+// タブ挿入 
 	{ "keys": ["ctrl+q","tab"], "command": "insert", "args": {"characters": "\t"} },
 
 // anythigパネル
@@ -36,190 +46,195 @@
 
 
 // Emmet
-    {
-        "keys": [
-            "alt+e"
-        ], 
-        "args": {
-            "action": "select_next_item"
-        }, 
-        "command": "run_emmet_action", 
-        "context": [
-            {
-                "key": "emmet_action_enabled.select_next_item"
-            }
-        ]
-    },
-    {
-        "keys": [
-            "alt+a"
-        ], 
-        "args": {
-            "action": "select_previous_item"
-        }, 
-        "command": "run_emmet_action", 
-        "context": [
-            {
-                "key": "emmet_action_enabled.select_previous_item"
-            }
-        ]
-    },
+	// {
+	//  "keys": [
+	//      "alt+e"
+	//  ], 
+	//  "args": {
+	//      "action": "select_next_item"
+	//  }, 
+	//  "command": "run_emmet_action", 
+	//  "context": [
+	//      {
+	//          "key": "emmet_action_enabled.select_next_item"
+	//      }
+	//  ]
+	// },
+	// {
+	//  "keys": [
+	//      "alt+a"
+	//  ], 
+	//  "args": {
+	//      "action": "select_previous_item"
+	//  }, 
+	//  "command": "run_emmet_action", 
+	//  "context": [
+	//      {
+	//          "key": "emmet_action_enabled.select_previous_item"
+	//      }
+	//  ]
+	// },
 	// 展開
 	{ "keys": [ "ctrl+enter" ],  "args": { "action": "expand_abbreviation" },"command": "run_emmet_action",  "context": [ { "key":"emmet_action_enabled.expand_abbreviation" } ] },
 	// 親要素へ
 	{ "keys": [ "ctrl+alt+j" ],  "args": { "action": "matching_pair" },"command": "run_emmet_action",  "context": [ { "key":"emmet_action_enabled.matching_pair" } ] },
 	// タブキー
 	{
-        "keys": [
-            "tab"
-        ], 
-        "command": "expand_abbreviation_by_tab", 
-        "context": [
-            {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
-                "operator": "equal", 
-                "match_all": true, 
-                "key": "selector"
-            }, 
-            {
-                "operand": "storage.type.templatetag.django", 
-                "operator": "not_equal", 
-                "match_all": true, 
-                "key": "selector"
-            }, 
-            {
-                "match_all": true, 
-                "key": "selection_empty"
-            }, 
-            {
-                "operator": "equal", 
-                "operand": false, 
-                "match_all": true, 
-                "key": "has_next_field"
-            }, 
-            {
-                "operator": "equal", 
-                "operand": false, 
-                "match_all": true, 
-                "key": "setting.disable_tab_abbreviations"
-            }, 
-            {
-                "operand": false, 
-                "operator": "equal", 
-                "match_all": true, 
-                "key": "auto_complete_visible"
-            }, 
-            {
-                "match_all": true, 
-                "key": "is_abbreviation"
-            }
-        ]
-    }, 
-//tab 挙動
-    {
-        "keys": [
-            "tab"
-        ], 
-        "command": "expand_abbreviation_by_tab", 
-        "context": [
-            {
-                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
-                "operator": "equal", 
-                "match_all": true, 
-                "key": "selector"
-            }, 
-            {
-                "operand": "storage.type.templatetag.django", 
-                "operator": "not_equal", 
-                "match_all": true, 
-                "key": "selector"
-            }, 
-            {
-                "match_all": true, 
-                "key": "selection_empty"
-            }, 
-            {
-                "operator": "equal", 
-                "operand": false, 
-                "match_all": true, 
-                "key": "has_next_field"
-            }, 
-            {
-                "operator": "equal", 
-                "operand": true, 
-                "match_all": true, 
-                "key": "auto_complete_visible"
-            }, 
-            {
-                "operator": "equal",
-                "operand": false, 
-                "match_all": true,
-                "key": "setting.disable_tab_abbreviations_on_auto_complete"
-            }, 
-            {
-                "match_all": true, 
-                "key": "is_abbreviation"
-            }
-        ]
-    },
-    { "keys": ["ctrl+x", "n"], "command": "side_bar_new_file2" },
-    { "keys": ["f2"], "command": "side_bar_rename" },
-    { "keys": ["ctrl+alt+f"], "command": "side_bar_find_files_path_containing" } ,
+		"keys": [
+			"tab"
+		], 
+		"command": "expand_abbreviation_by_tab", 
+		"context": [
+			{
+				"operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+				"operator": "equal", 
+				"match_all": true, 
+				"key": "selector"
+			}, 
+			{
+				"operand": "storage.type.templatetag.django", 
+				"operator": "not_equal", 
+				"match_all": true, 
+				"key": "selector"
+			}, 
+			{
+				"match_all": true, 
+				"key": "selection_empty"
+			}, 
+			{
+				"operator": "equal", 
+				"operand": false, 
+				"match_all": true, 
+				"key": "has_next_field"
+			}, 
+			{
+				"operator": "equal", 
+				"operand": false, 
+				"match_all": true, 
+				"key": "setting.disable_tab_abbreviations"
+			}, 
+			{
+				"operand": false, 
+				"operator": "equal", 
+				"match_all": true, 
+				"key": "auto_complete_visible"
+			}, 
+			{
+				"match_all": true, 
+				"key": "is_abbreviation"
+			}
+		]
+	}, 
+	//tab 挙動
+	{
+		"keys": [
+			"tab"
+		], 
+		"command": "expand_abbreviation_by_tab", 
+		"context": [
+			{
+				"operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+				"operator": "equal", 
+				"match_all": true, 
+				"key": "selector"
+			}, 
+			{
+				"operand": "storage.type.templatetag.django", 
+				"operator": "not_equal", 
+				"match_all": true, 
+				"key": "selector"
+			}, 
+			{
+				"match_all": true, 
+				"key": "selection_empty"
+			}, 
+			{
+				"operator": "equal", 
+				"operand": false, 
+				"match_all": true, 
+				"key": "has_next_field"
+			}, 
+			{
+				"operator": "equal", 
+				"operand": true, 
+				"match_all": true, 
+				"key": "auto_complete_visible"
+			}, 
+			{
+				"operator": "equal",
+				"operand": false, 
+				"match_all": true,
+				"key": "setting.disable_tab_abbreviations_on_auto_complete"
+			}, 
+			{
+				"match_all": true, 
+				"key": "is_abbreviation"
+			}
+		]
+	},
+	{ "keys": ["ctrl+x", "n"], "command": "side_bar_new_file2" },
+	{ "keys": ["f2"], "command": "side_bar_rename" },
+	{ "keys": ["ctrl+alt+f"], "command": "side_bar_find_files_path_containing" } ,
 
 //sublemacs
-    { "keys": ["home"], "command": "move_to", "args": {"to": "bol", "extend": false} },
-    { "keys": ["end"], "command": "move_to", "args": {"to": "eol", "extend": false} },
-    { "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
-    { "keys": ["ctrl+a"], "command": "select_all" },
+	//{ "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false}},
+	//{ "keys": ["ctrl+a"], "command": "select_all" },
+	//{ "keys": ["ctrl+s"], "command": "save" },
+	//{ "keys": ["ctrl+x", "ctrl+g"], "command": "unbound" },
+	//{ "keys": ["ctrl+x", "ctrl+i"], "command": "unbound" },
+	//{ "keys": ["F3"], "command": "unbound" },
+	//{ "keys": ["ctrl+shift+g"], "command": "unbound" },
+	//{ "keys": ["ctrl+i"], "command": "find_next", "context":[{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]},
+	//{ "keys": ["ctrl+shift+i"], "command": "find_prev", "context":[{"key": "panel", "operand": "find"}, {"key": "panel_has_focus"}]},
 
 //sublimeFiles
-    { "keys": ["ctrl+x", "f"],"command": "sublime_files","args": {"command": "navigate"} },
+	{ "keys": ["ctrl+x", "f"],"command": "sublime_files","args": {"command": "navigate"} },
 
 //advancedNewFile
-    { "keys": ["ctrl+alt+n"], "command": "advanced_new_file_new"},
+	{ "keys": ["ctrl+alt+n"], "command": "advanced_new_file_new"},
 
 //expandRegion
-    { "keys": ["ctrl+shift+space"], "command": "expand_region" },
-    {
-      "keys": ["alt+shift+["],
-      "command": "expand_region",
-      "args": {"undo": true},
-      "context": [{ "key": "expand_region_soft_undo" }]
-    },
+	{ "keys": ["ctrl+shift+space"], "command": "expand_region" },
+	{
+		"keys": ["alt+shift+["],
+		"command": "expand_region",
+		"args": {"undo": true},
+		"context": [{ "key": "expand_region_soft_undo" }]
+	},
 //shell_command
-    {"keys": ["alt+shift+1"],"command": "shell_command"},
+	{"keys": ["alt+shift+1"],"command": "shell_command"},
 
 //braketHirighter
-    // Select text between brackets
-    // {
-    //     "no_outside_adj": true,
-    //     "keys": ["ctrl+shift+space"],
-    //     "command": "bh_key",
-    //     "args":
-    //     {
-    //         "lines" : true,
-    //         "plugin":
-    //         {
-    //             "type": ["__all__"],
-    //             "command": "bh_modules.bracketselect"
-    //         }
-    //     }
-    // },
-    // {
-    //     "keys": ["ctrl+shift+alt+space"],
-    //     "command": "bh_key",
-    //     "args":
-    //     {
-    //         "no_outside_adj": true,
-    //         "lines" : true,
-    //         "plugin":
-    //         {
-    //             "type": ["__all__"],
-    //             "command": "bh_modules.bracketselect",
-    //             "args": {"always_include_brackets": true}
-    //         }
-    //     }
-    // },
+	// Select text between brackets
+	// {
+	//   "no_outside_adj": true,
+	//   "keys": ["ctrl+shift+space"],
+	//   "command": "bh_key",
+	//   "args":
+	//   {
+	//       "lines" : true,
+	//       "plugin":
+	//       {
+	//           "type": ["__all__"],
+	//           "command": "bh_modules.bracketselect"
+	//       }
+	//   }
+	// },
+	// {
+	//   "keys": ["ctrl+shift+alt+space"],
+	//   "command": "bh_key",
+	//   "args":
+	//   {
+	//       "no_outside_adj": true,
+	//       "lines" : true,
+	//       "plugin":
+	//       {
+	//           "type": ["__all__"],
+	//           "command": "bh_modules.bracketselect",
+	//           "args": {"always_include_brackets": true}
+	//       }
+	//   }
+	// },
 
 //set mark LC+space
 //単語選択 RC+space
